@@ -5,8 +5,9 @@ export default class List extends Component {
 
 // Simple showings toggler
   showIngsToggle(originList, idx) {
-    const bool = originList.list[idx].showIngs;
-    return update(originList, {list: {[idx]: {showIngs: {$set: !bool}}}})
+    return update(originList,
+      {list: {[idx]: {showIngs: {$apply: (bool)=>!bool}}}}
+    )
   }
 
   recipeToggle(id, idx) {

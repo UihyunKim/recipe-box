@@ -25,8 +25,8 @@ export default class Main extends Component {
         },
       ],
       add: {
-        title: "write here...",
-        ings: [],
+        // title: "",
+        // ings: [],
         showInput: false,
       }
     }
@@ -48,6 +48,7 @@ export default class Main extends Component {
           state={this.state}
           updateState={this.updateState.bind(this)}
         />
+      {/* {console.log(this.state)} */}
       </div>
     );
   }
