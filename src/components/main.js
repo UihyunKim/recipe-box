@@ -16,25 +16,25 @@ export default class Main extends Component {
           title: "Kimbop",
           ings: ["kim", "bop"],
           showIngs: true,
+          edit: false,
         },
         {
           id: "uuid2",
           title: "Japchae",
           ings: ["dangmeyon", "carrot", "sauce"],
           showIngs: false,
+          edit : false,
         },
       ],
       add: {
-        // title: "",
-        // ings: [],
         showInput: false,
       }
     }
   }
 
   // list updater
-  updateState (newState) {
-    this.setState(newState);
+  updateState (newState, callback) {
+    this.setState(newState, callback);
   }
 
   render() {
@@ -48,7 +48,6 @@ export default class Main extends Component {
           state={this.state}
           updateState={this.updateState.bind(this)}
         />
-      {/* {console.log(this.state)} */}
       </div>
     );
   }

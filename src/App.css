@@ -1,0 +1,14 @@
+.recipe-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-title h2 {
+  margin-right: auto;
+}
+
+.recipe-title h3 {
+  margin: 0 10px;
+}
+/*# sourceMappingURL=App.css.map */

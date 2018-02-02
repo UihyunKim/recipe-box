@@ -45,6 +45,10 @@ export default class List extends Component {
     this.props.updateState(newState);
   }
 
+  recipeEdit() {
+
+  }
+
   render() {
     return (
       <div className="list">
@@ -54,6 +58,7 @@ export default class List extends Component {
 
               <div className="recipe-title">
                 <h2 onClick={this.recipeToggle.bind(this, el.id, idx)}>{el.title}</h2>
+                <h3 onClick={this.recipeEdit.bind(this, this.props.state, idx)}>edit</h3>
                 <h3 onClick={this.recipeDelete.bind(this, this.props.state, idx)}>del</h3>
               </div>
 

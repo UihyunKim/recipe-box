@@ -12,11 +12,56 @@ export default class Add extends Component {
     }
   }
 
+  // Close other opened recipe
+  callback(param) {
+    if (param === 'close') {
+
+      // (step1) If turn on add input,
+      if (this.props.state.add.showInput) {
+
+        // (step2)find index of opened recipe
+        const idx = this.props.state.list.findIndex(el => el.showIngs);
+
+        // (step3) If opened recipe exist, close
+        if(idx > -1) {
+          this.props.updateState(
+            update(this.props.state,
+              {list: {[idx]: {showIngs: {$set: false}}}}
+            )
+          );
+        }
+      }
+
+    }
+
+    // else param === index
+    else if (param === 'open') {
+
+      const idx = (this.props.state.list.length - 1);
+
+      const list1 = update(
+          this.props.state, {list: {[idx]: {showIngs: {$set: true}}}}
+        )
+
+      const list2 = update(
+          list1, {add: {showInput: {$set: false}}}
+        )
+
+      this.props.updateState(list2);
+    }
+
+
+  }
+
   // ADD button
-  handleClick() {
+  handleClickAddNew() {
     // input view switch
-    this.props.updateState(update(this.props.state,
-      {add: {showInput: {$apply: (bool)=>!bool}}})
+    this.props.updateState(
+      update(this.props.state,
+        {add: {showInput: {$apply: (bool)=>!bool}}}
+      ),
+      // callback
+      this.callback.bind(this, 'close')
     );
 
     // empty input text area
@@ -51,15 +96,31 @@ export default class Add extends Component {
     // step1. update title
     const newRecipe = {
       id: uuid(),
-      title: this.state.title,
-      ings: items,
+      title: this.state.title || 'untitled',
+      ings: items.length > 0 ? items : ['blank'],
       showIngs: false,
+      edit: false,
     }
 
     // step2. update List
-    this.props.updateState(update(this.props.state,
-      {list: {$push: [newRecipe]}}
-    ))
+    // add list if text area is written
+    if (this.state.title.length + this.state.ings.length > 0) {
+      this.props.updateState(
+        update(
+          this.props.state, {list: {$push: [newRecipe]}}
+        ),
+        // callback
+        this.callback.bind(this, 'open')
+      )
+    }
+    // Click "Cancel", close input.
+    else {
+      this.props.updateState(
+        update(
+          this.props.state, {add: {showInput: {$set: false}}}
+        )
+      )
+    }
 
     // step3. reset this.state
     this.handleThisState('reset');
@@ -71,7 +132,7 @@ export default class Add extends Component {
       <div className="Add">
         <div
           className="add-title"
-          onClick={this.handleClick.bind(this)}
+          onClick={this.handleClickAddNew.bind(this)}
         >Add new</div>
 
         {/* input toggle */}
@@ -96,7 +157,8 @@ export default class Add extends Component {
               />
 
               <button>
-                Add
+                {this.state.title.length + this.state.ings.length > 0 ?
+                  'Add' : 'Cancel'}
               </button>
 
             </form>
@@ -104,7 +166,6 @@ export default class Add extends Component {
 
         : "" }
 
-        {/* {console.log(this.state)} */}
       </div>
     );
   }
