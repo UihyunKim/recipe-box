@@ -99,7 +99,6 @@ export default class Add extends Component {
       title: this.state.title || 'untitled',
       ings: items.length > 0 ? items : ['blank'],
       showIngs: false,
-      edit: false,
     }
 
     // step2. update List
@@ -144,7 +143,6 @@ export default class Add extends Component {
               {/* Input title */}
               <input
                 className="input-title"
-                // onChange={this.handleChangeTitle.bind(this)}
                 onChange={this.handleThisState.bind(this, 'title')}
                 value={this.state.title}
               />

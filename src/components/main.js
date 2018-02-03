@@ -16,19 +16,18 @@ export default class Main extends Component {
           title: "Kimbop",
           ings: ["kim", "bop"],
           showIngs: true,
-          edit: false,
         },
         {
           id: "uuid2",
           title: "Japchae",
           ings: ["dangmeyon", "carrot", "sauce"],
           showIngs: false,
-          edit : false,
         },
       ],
       add: {
         showInput: false,
-      }
+      },
+      edit: null,
     }
   }
 
