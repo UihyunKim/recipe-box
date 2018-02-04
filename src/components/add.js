@@ -12,6 +12,17 @@ export default class Add extends Component {
     }
   }
 
+  componentWillMount() {
+    const getStateData = JSON.parse(window.localStorage.getItem('addState'));
+    this.setState(getStateData);
+
+  }
+
+  componentDidUpdate() {
+    const stateData = JSON.stringify(this.state);
+    window.localStorage.setItem('addState', stateData);
+  }
+
   // Close other opened recipe
   callback(param) {
     if (param === 'close') {

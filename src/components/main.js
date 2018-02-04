@@ -31,6 +31,22 @@ export default class Main extends Component {
     }
   }
 
+  componentWillMount() {
+    console.log('component will mount');
+    const getStateData = JSON.parse(window.localStorage.getItem('stateData'));
+    console.log(getStateData);
+    this.setState(getStateData);
+
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+    console.log(this.state);
+    const stateData = JSON.stringify(this.state);
+    window.localStorage.setItem('stateData', stateData);
+  }
+
+
   // list updater
   updateState (newState, callback) {
     this.setState(newState, callback);

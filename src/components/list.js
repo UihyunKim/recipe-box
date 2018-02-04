@@ -10,6 +10,21 @@ export default class List extends Component {
     }
   }
 
+  componentWillMount() {
+    console.log('component will mount - list.js');
+    const getStateData = JSON.parse(window.localStorage.getItem('listState'));
+    console.log(getStateData);
+    this.setState(getStateData);
+
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate - list.js');
+    console.log(this.state);
+    const stateData = JSON.stringify(this.state);
+    window.localStorage.setItem('listState', stateData);
+  }
+
   // showIngs toggler
   showIngsToggle(originList, idx) {
     return update(originList,
