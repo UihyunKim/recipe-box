@@ -141,6 +141,7 @@ html .recipe-title {
 
 html .recipe-title h2 {
   margin-right: auto;
+  font-weight: 400;
 }
 
 html .recipe-title h3 {
