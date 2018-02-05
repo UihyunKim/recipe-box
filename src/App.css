@@ -102,6 +102,7 @@ html #root .App .Header h1 {
   margin: 20px 10px;
   align-self: flex-end;
   letter-spacing: 2.5px;
+  color: white;
 }
 
 html #root .App .Main {
