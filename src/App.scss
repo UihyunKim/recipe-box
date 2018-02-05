@@ -92,6 +92,12 @@ form {
 
 }
 
+.special-font,
+.recipe-title,
+button {
+    cursor: pointer;
+}
+
 html {
     width: 100%;
     height: 100%;
