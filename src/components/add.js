@@ -141,16 +141,16 @@ export default class Add extends Component {
     return (
       <div className="Add">
         <div
-          className="add-title"
+          className="add-title special-font"
           onClick={this.handleClickAddNew.bind(this)}
-        >Add new</div>
+        >Add</div>
 
         {/* input toggle */}
         {this.props.state.add.showInput ?
 
           <div className="add-input-container">
             <form onSubmit={this.handleSubmit.bind(this)}>
-
+              <label htmlFor="">Title</label>
               {/* Input title */}
               <input
                 className="input-title"
@@ -158,6 +158,7 @@ export default class Add extends Component {
                 value={this.state.title}
               />
 
+              <label htmlFor="">Ingredients(,)</label>
               {/* Input ingrediants */}
               <input
                 className="input-ings"
@@ -165,7 +166,11 @@ export default class Add extends Component {
                 value={this.state.ings}
               />
 
-              <button>
+              <button
+                className={this.state.title.length + this.state.ings.length > 0 ?
+                          'one-button okay' : 'one-button cancel'
+                          }
+              >
                 {this.state.title.length + this.state.ings.length > 0 ?
                   'Add' : 'Cancel'}
               </button>

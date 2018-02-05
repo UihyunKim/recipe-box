@@ -1,14 +1,148 @@
-.recipe-title {
+@import url("https://fonts.googleapis.com/css?family=Nova+Flat|Ubuntu:500");
+* {
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.special-font {
+  font-family: "Nova Flat", cursive;
+}
+
+.edit-del {
+  color: #928686;
+  font-weight: normal;
+}
+
+ul {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 18px 0 5px 10px;
+}
+
+form > * {
+  margin-bottom: 10px;
+  color: #928686;
+}
+
+form label {
+  flex: 0 0 30%;
+  font-size: 14px;
+}
+
+form input {
+  flex: 0 0 70%;
+  border: none;
+  border-bottom: 1px solid #928686;
+  color: black;
+}
+
+form button {
+  background-color: #DFCFC1;
+  color: #302C4A;
+  border: none;
+  border-radius: 5px;
+  height: 26px;
+}
+
+form button:first-of-type {
+  margin-left: auto;
+}
+
+form button.one-button {
+  flex: 0 0 70%;
+}
+
+form button.two-button {
+  flex: 0 0 33%;
+}
+
+form button.two-button:last-of-type {
+  margin-left: 4%;
+  background-color: #302C4A;
+  color: #DFCFC1;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+html #root {
+  max-width: 500px;
+  height: 80vh;
+  margin: 10vh auto;
+  background-color: white;
+}
+
+@media only screen and (max-device-width: 800px) {
+  html #root {
+    height: 100vh;
+    margin: 0 auto;
+  }
+}
+
+html #root .App {
+  background-color: white;
+}
+
+html #root .App .Header {
+  background: url("./cover.png") top center no-repeat;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+}
+
+html #root .App .Header h1 {
+  margin: 20px 10px;
+  align-self: flex-end;
+  letter-spacing: 2.5px;
+}
+
+html #root .App .Main {
+  margin: 0 10px;
+}
+
+html #root .App .Main .Add {
+  position: relative;
+}
+
+html #root .App .Main .Add .add-title {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  background-color: #302C4A;
+  color: #DFCFC1;
+  padding: 6px 10px;
+  border-radius: 9px;
+  top: -52px;
+}
+
+html #root .App .Main .Add .add-input-container {
+  position: absolute;
+  background-color: white;
+}
+
+html #root .App .Main .list .recipe .recipe-title h2 {
+  font-size: 20px;
+}
+
+html .recipe-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.recipe-title h2 {
+html .recipe-title h2 {
   margin-right: auto;
 }
 
-.recipe-title h3 {
+html .recipe-title h3 {
   margin: 0 10px;
 }
 /*# sourceMappingURL=App.css.map */

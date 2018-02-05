@@ -11,16 +11,12 @@ export default class List extends Component {
   }
 
   componentWillMount() {
-    console.log('component will mount - list.js');
     const getStateData = JSON.parse(window.localStorage.getItem('listState'));
-    console.log(getStateData);
     this.setState(getStateData);
 
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate - list.js');
-    console.log(this.state);
     const stateData = JSON.stringify(this.state);
     window.localStorage.setItem('listState', stateData);
   }
@@ -34,7 +30,6 @@ export default class List extends Component {
 
   // edit toggler
   editToggle(originState, id, idx) {
-    console.log(originState)
     // fetch data from this recipe
     const newList = {
       title: originState.list[idx].title,
@@ -194,8 +189,8 @@ export default class List extends Component {
 
               <div className="recipe-title">
                 <h2 onClick={this.recipeToggle.bind(this, el.id, idx)}>{el.title}</h2>
-                <h3 onClick={this.editToggle.bind(this, this.props.state, el.id, idx)}>edit</h3>
-                <h3 onClick={this.recipeDelete.bind(this, this.props.state, idx)}>del</h3>
+                <h3 onClick={this.editToggle.bind(this, this.props.state, el.id, idx)} className="special-font edit-del">edit</h3>
+                <h3 onClick={this.recipeDelete.bind(this, this.props.state, idx)} className="special-font edit-del">del</h3>
               </div>
 
               {el.showIngs ?
@@ -215,6 +210,7 @@ export default class List extends Component {
 
                   <form onSubmit={this.handleSubmit.bind(this, el.id)}>
 
+                    <label htmlFor="">Title</label>
                     {/* Input title */}
                     <input
                       className="input-title"
@@ -222,6 +218,7 @@ export default class List extends Component {
                       value={this.state.title}
                     />
 
+                    <label htmlFor="">Ingredients</label>
                     {/* Input ingrediants */}
                     <input
                       className="input-ings"
@@ -229,8 +226,8 @@ export default class List extends Component {
                       value={this.state.ings}
                     />
 
-                    <button type="submit">Ok</button>
-                    <button onClick={this.handleCancel.bind(this)}>Cancel</button>
+                    <button onClick={this.handleCancel.bind(this)} className="two-button cancel">Cancel</button>
+                    <button type="submit" className="two-button okay">Ok</button>
 
                   </form>
                 </div>

@@ -32,16 +32,12 @@ export default class Main extends Component {
   }
 
   componentWillMount() {
-    console.log('component will mount');
     const getStateData = JSON.parse(window.localStorage.getItem('stateData'));
-    console.log(getStateData);
     this.setState(getStateData);
 
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate');
-    console.log(this.state);
     const stateData = JSON.stringify(this.state);
     window.localStorage.setItem('stateData', stateData);
   }
@@ -55,11 +51,11 @@ export default class Main extends Component {
   render() {
     return (
       <div className="Main">
-        <List
+        <Add
           state={this.state}
           updateState={this.updateState.bind(this)}
         />
-        <Add
+        <List
           state={this.state}
           updateState={this.updateState.bind(this)}
         />
